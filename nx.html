@@ -1,0 +1,80 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>None</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"Gender": "Female", "Goodness": "Green", "id": "Cinderella", "label": "Cinderella", "shape": "dot", "size": 10}, {"Gender": "Female", "Goodness": "Red", "id": "Lady Tremaine", "label": "Lady Tremaine", "shape": "dot", "size": 10}, {"Gender": "Male", "Goodness": "Green", "id": "Jaq", "label": "Jaq", "shape": "dot", "size": 10}, {"Gender": "Male", "Goodness": "Green", "id": "Gus", "label": "Gus", "shape": "dot", "size": 10}, {"Gender": "Female", "Goodness": "Green", "id": "Fairy Godmother", "label": "Fairy Godmother", "shape": "dot", "size": 10}, {"Gender": "Male", "Goodness": "Green", "id": "Prince Charming", "label": "Prince Charming", "shape": "dot", "size": 10}, {"Gender": "Female", "Goodness": "Red", "id": "Drizella Tremaine", "label": "Drizella Tremaine", "shape": "dot", "size": 10}, {"Gender": "Female", "Goodness": "Red", "id": "Anastasia Tremaine", "label": "Anastasia Tremaine", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"from": "Cinderella", "to": "Lady Tremaine", "weight": 1}, {"from": "Cinderella", "to": "Jaq", "weight": 1}, {"from": "Cinderella", "to": "Gus", "weight": 1}, {"from": "Cinderella", "to": "Fairy Godmother", "weight": 1}, {"from": "Cinderella", "to": "Prince Charming", "weight": 1}, {"from": "Lady Tremaine", "to": "Drizella Tremaine", "weight": 1}, {"from": "Lady Tremaine", "to": "Anastasia Tremaine", "weight": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {"nodes": {"color": {"border": "rgba(233,81,212,1)", "background": "rgba(252,207,179,1)", "hover": {"border": "rgba(233,136,164,1)"}}}};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
